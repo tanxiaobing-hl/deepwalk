@@ -1,5 +1,12 @@
 问题：为什么DeepWalk能够尝到图的结构信息？或者说，DeepWalk是如何学习图的结构信息的？
 答：
+DeepWalk的思想来源于NLP中的 Skip-Gram。
+   Skip-Gram的基本思想：
+   The main idea behind skip-gram is training a model on the context of each word, 
+   so similar words will have similar numerical representations (i.e similar embedding vectors).
+   Ref: http://www.thushv.com/natural_language_processing/word2vec-part-1-nlp-with-deep-learning-with-tensorflow-skip-gram/ 
+   词与词的关系越紧密，则在语料中这对(input_word, output_word)出现的可能性越高，出现的次数越多，如（climb, tree）。
+   所以，DeepWalk 就通过随机游走形成“语料”，让越相近，关系越密切的节点（单词）之间出现的概率越高，出现的次数越多，从而刻画出图的结构信息。
 这是对图中节点3524的随机游走数据。
 1. 游走一次形成一条路径（path），路径长度为40
 2. 每个节点构建80条路径（path）
